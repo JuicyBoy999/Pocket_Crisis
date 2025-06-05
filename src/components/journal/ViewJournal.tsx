@@ -123,7 +123,7 @@ const filteredEntries = journalEntries.filter(entry => {
 
       {filteredEntries.length === 0 ? (
         <p className="text-gray-600 italic text-center">
-          No journal entries found.
+         Your mind is quiet today. That's okay too.
         </p>
       ) : (
         Object.entries(groupedEntries).map(([date, entries]) => (
