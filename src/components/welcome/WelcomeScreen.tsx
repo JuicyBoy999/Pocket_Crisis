@@ -18,7 +18,7 @@ const WelcomeScreen: React.FC = () => {
         title="Visit Bolt.new"
       >
         <img
-          src="https://drive.google.com/uc?id=1NUs4zAKlQGbmIohbEwd-LNOpxu0waMAZ"
+          src="https://drive.google.com/file/d/1NUs4zAKlQGbmIohbEwd-LNOpxu0waMAZ/view?usp=sharing"
           alt="Bolt Logo"
           className="h-10 w-10 object-contain hover:opacity-80 transition-opacity"
         />
