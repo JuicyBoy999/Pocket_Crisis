@@ -1,3 +1,4 @@
+import boltLogo from '../../assets/bolt-logo.png';
 import React from 'react';
 import { Heart } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
@@ -18,7 +19,7 @@ const WelcomeScreen: React.FC = () => {
         title="Visit Bolt.new"
       >
         <img
-          src="https://imgur.com/a/baJy7HB"
+        src="https://i.imgur.com/O3pIgIx.png"
           alt="Bolt Logo"
           className="h-10 w-10 object-contain hover:opacity-80 transition-opacity"
         />
