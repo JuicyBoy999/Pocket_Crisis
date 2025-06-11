@@ -19,7 +19,7 @@ const WelcomeScreen: React.FC = () => {
         title="Visit Bolt.new"
       >
         <img
-        src="https://i.imgur.com/O3pIgIx.png"
+        src={boltLogo}
           alt="Bolt Logo"
           className="h-10 w-10 object-contain hover:opacity-80 transition-opacity"
         />
