@@ -162,7 +162,7 @@ const filteredEntries = journalEntries.filter(entry => {
                             <option value="😊">😊 Happy</option>
                             <option value="😔">😔 Sad</option>
                             <option value="😡">😡 Angry</option>
-                            <option value="😰">😰 Anxious</option>
+                            <option value="😨">😨 Anxious</option>
                             <option value="😌">😌 Relieved</option>
                             <option value="😐">😐 Neutral</option>
                           </select>
