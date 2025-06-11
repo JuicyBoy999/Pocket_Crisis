@@ -14,7 +14,7 @@ const emotionColors: Record<string, string> = {
   '😊': '#34D399', // green - happy
   '😔': '#60A5FA', // blue - sad
   '😡': '#EF4444', // red - angry
-  '😰': '#FBBF24', // yellow - anxious
+  '😨': '#FBBF24', // yellow - anxious
   '😌': '#A78BFA', // purple - relieved
   '😐': '#9CA3AF', // gray - neutral
   '': '#E5E7EB',    // light gray - none
@@ -24,7 +24,7 @@ const emotionLabels: Record<string, string> = {
   '😊': 'Happy',
   '😔': 'Sad',
   '😡': 'Angry',
-  '😰': 'Anxious',
+  '😨': 'Anxious',
   '😌': 'Relieved',
   '😐': 'Neutral',
   '': 'None',
