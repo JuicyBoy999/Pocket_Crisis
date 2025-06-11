@@ -124,7 +124,7 @@ const filteredEntries = journalEntries.filter(entry => {
       </p>
       
 <EmotionHeatmap journalEntries={journalEntries} />
-      <ReflectionPrompts journalEntries={journalEntries} />
+     
       
       {filteredEntries.length === 0 ? (
         <p className="text-gray-600 italic text-center">
