@@ -68,6 +68,7 @@ const EmotionHeatmap: React.FC<Props> = ({ journalEntries }) => {
   return (
     <div className="mb-8">
       <h2 className="text-xl font-semibold mb-2 text-gray-800">📊 Weekly Emotion Heatmap</h2>
+      <EmotionHeatmap journalEntries={journalEntries} />
       <div className="flex gap-2">
         {past7Days.map((day, i) => (
           <div key={i} className="flex flex-col items-center">
