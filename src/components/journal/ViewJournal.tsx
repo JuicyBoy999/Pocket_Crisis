@@ -4,7 +4,6 @@ import { useAppContext } from "../../context/AppContext";
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 import TextArea from "../ui/TextArea";
-import ReflectionPrompts from './ReflectionPrompts';
 
 const ViewJournal: React.FC = () => {
   const {
