@@ -1,3 +1,4 @@
+import EmotionHeatmap from './EmotionHeatmap';
 import React, { useState } from 'react';
 import { useAppContext } from "../../context/AppContext";
 import Card from "../ui/Card";
@@ -120,7 +121,9 @@ const filteredEntries = journalEntries.filter(entry => {
       <p className="text-sm text-gray-500 mb-6">
         Tip: Try <code>emotion:happy</code> or <code>emotion:😊</code>
       </p>
-
+      
+<EmotionHeatmap journalEntries={journalEntries} />
+      
       {filteredEntries.length === 0 ? (
         <p className="text-gray-600 italic text-center">
          Your mind is quiet today. That's okay too.
