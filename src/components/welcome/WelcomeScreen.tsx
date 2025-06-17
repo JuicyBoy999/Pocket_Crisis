@@ -4,7 +4,6 @@ import { Heart } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
-import { Bot } from 'lucide-react'; // Icon for assistant
 
 const WelcomeScreen: React.FC = () => {
   const { setCurrentScreen, hasSavedPlan } = useAppContext();
@@ -20,7 +19,7 @@ const WelcomeScreen: React.FC = () => {
         title="Visit Bolt.new"
       >
         <img
-          src={boltLogo}
+        src={boltLogo}
           alt="Bolt Logo"
           className="h-10 w-10 object-contain hover:opacity-80 transition-opacity"
         />
@@ -68,18 +67,6 @@ const WelcomeScreen: React.FC = () => {
             I need help right now
           </Button>
 
-          <Button
-            onClick={() => setCurrentScreen('ai-chat')}
-            variant="ghost"
-            size="lg"
-            fullWidth
-          >
-            <div className="flex items-center justify-center gap-2">
-              <Bot className="w-5 h-5" />
-              Chat with MindEase
-            </div>
-          </Button>
-
           {!hasSavedPlan && (
             <p className="text-sm text-gray-500 italic">
               Crisis mode will be available after you complete setup
@@ -90,3 +77,5 @@ const WelcomeScreen: React.FC = () => {
     </div>
   );
 };
+
+export default WelcomeScreen;
