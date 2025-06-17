@@ -11,13 +11,13 @@ interface Props {
 }
 
 const emotionColors: Record<string, string> = {
-  '😊': '#34D399', // green - happy
-  '😔': '#60A5FA', // blue - sad
-  '😡': '#EF4444', // red - angry
-  '😨': '#FBBF24', // yellow - anxious
-  '😌': '#A78BFA', // purple - relieved
-  '😐': '#9CA3AF', // gray - neutral
-  '': '#E5E7EB',    // light gray - none
+  '😊': '#34D399',
+  '😔': '#60A5FA',
+  '😡': '#EF4444',
+  '😨': '#FBBF24',
+  '😌': '#A78BFA',
+  '😐': '#9CA3AF',
+  '': '#E5E7EB',
 };
 
 const emotionLabels: Record<string, string> = {
@@ -44,7 +44,6 @@ function getPast7Days(): Date[] {
 const EmotionHeatmap: React.FC<Props> = ({ journalEntries }) => {
   const past7Days = getPast7Days();
 
-  // Find dominant emotion for each day (most frequent)
   const emotionByDay = past7Days.map(day => {
     const dayStr = day.toDateString();
     const entries = journalEntries.filter(
@@ -53,14 +52,12 @@ const EmotionHeatmap: React.FC<Props> = ({ journalEntries }) => {
 
     if (entries.length === 0) return '';
 
-    // Count frequencies
     const freq: Record<string, number> = {};
     for (const e of entries) {
       const emo = e.emotion || '';
       freq[emo] = (freq[emo] || 0) + 1;
     }
 
-    // Return emotion with highest count
     const dominant = Object.entries(freq).sort((a, b) => b[1] - a[1])[0][0];
     return dominant;
   });
@@ -68,7 +65,6 @@ const EmotionHeatmap: React.FC<Props> = ({ journalEntries }) => {
   return (
     <div className="mb-8">
       <h2 className="text-xl font-semibold mb-2 text-gray-800">📊 Weekly Emotion Heatmap</h2>
-      <EmotionHeatmap journalEntries={journalEntries} />
       <div className="flex gap-2">
         {past7Days.map((day, i) => (
           <div key={i} className="flex flex-col items-center">
