@@ -45,4 +45,5 @@ export type AppScreen =
   | "crisis-affirmations"
   | "crisis-content"
   | "crisis-final"
-  | "crisis-journal";
+  | "crisis-journal"
+  | "chat-assistant";
