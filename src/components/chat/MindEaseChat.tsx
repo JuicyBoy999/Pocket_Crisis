@@ -1,3 +1,4 @@
+import { getMindEaseReply } from '../../api';
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import { Bot, User } from 'lucide-react';
@@ -8,8 +9,27 @@ const MindEaseChat: React.FC = () => {
   const [input, setInput] = useState('');
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
-  const sendMessage = () => {
-    if (input.trim() === '') return;
+const sendMessage = async () => {
+  const trimmed = input.trim();
+  if (trimmed === '') return;
+
+  const userMessage = { sender: 'user' as const, text: trimmed };
+  setMessages((prev) => [...prev, userMessage]);
+  setInput('');
+
+  try {
+    const reply = await getMindEaseReply(trimmed);
+    const botReply = { sender: 'bot' as const, text: reply };
+    setMessages((prev) => [...prev, botReply]);
+  } catch (err) {
+    const errorReply = {
+      sender: 'bot' as const,
+      text: "Oops! I'm having trouble responding right now. Please try again later.",
+    };
+    setMessages((prev) => [...prev, errorReply]);
+  }
+};
+
 
     const userMessage = { sender: 'user', text: input };
     const botReply = {
@@ -21,19 +41,6 @@ const MindEaseChat: React.FC = () => {
     setInput('');
   };
 
-  const generateBotResponse = (userInput: string): string => {
-    // Simple empathetic logic (you can replace this with smarter AI later)
-    const lowered = userInput.toLowerCase();
-    if (lowered.includes('anxious') || lowered.includes('nervous')) {
-      return "It’s completely okay to feel anxious sometimes. Want to try a calming technique together?";
-    } else if (lowered.includes('sad')) {
-      return "I’m here for you. Do you want to talk more about what’s making you feel this way?";
-    } else if (lowered.includes('alone')) {
-      return "You’re not alone right now — I’m here with you. Would it help to reflect on your reasons to stay?";
-    } else {
-      return "I’m here and listening. Tell me more, at your pace 💛";
-    }
-  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
