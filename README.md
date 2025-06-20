@@ -20,7 +20,6 @@ In hard moments, we often forget what could help us. This app acts as a gentle, 
 - (Optional) OpenAI API for MindEase responses
 
 ## Demo Video
-📺 [Add your Loom or YouTube link here]
 
 ## About the Creator
 Solo Bsc(Hons) Computing student from Nepal, focused on building meaningful and emotionally intelligent tools.
