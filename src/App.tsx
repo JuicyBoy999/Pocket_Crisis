@@ -17,6 +17,7 @@ import CrisisAffirmations from './components/crisis/CrisisAffirmations';
 import CrisisContent from './components/crisis/CrisisContent';
 import CrisisFinal from './components/crisis/CrisisFinal';
 import CrisisJournal from './components/crisis/CrisisJournal';
+import MindEaseChat from './components/chat/MindEaseChat';
 import './styles/animations.css';
 
 const AppContent: React.FC = () => {
@@ -58,6 +59,8 @@ const AppContent: React.FC = () => {
         return <CrisisFinal />;
       case 'crisis-journal':
         return <CrisisJournal />;
+      case 'chat-assistant' :
+        return <MindEaseChat />;
       default:
         return <WelcomeScreen />;
     }
