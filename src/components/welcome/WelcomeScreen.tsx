@@ -69,16 +69,15 @@ const WelcomeScreen: React.FC = () => {
           </Button>
 
           <Button
-            onClick={() => setCurrentScreen('ai-chat')}
-            variant="ghost"
-            size="lg"
-            fullWidth
-          >
-            <div className="flex items-center justify-center gap-2">
-              <Bot className="w-5 h-5" />
-              Chat with MindEase
-            </div>
-          </Button>
+  onClick={() => setCurrentScreen('chat-assistant')}
+  variant="secondary"
+  size="lg"
+  fullWidth
+>
+  <Bot className="inline-block mr-2" />
+  Chat with MindEase
+</Button>
+
 
           {!hasSavedPlan && (
             <p className="text-sm text-gray-500 italic">
