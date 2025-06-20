@@ -1,7 +1,6 @@
-import { getMindEaseReply } from '../../api';
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
-import { Bot, User } from 'lucide-react';
+import { getMindEaseReply } from '../../api'; // ✅ new import
 
 const MindEaseChat: React.FC = () => {
   const { setCurrentScreen } = useAppContext();
@@ -9,38 +8,27 @@ const MindEaseChat: React.FC = () => {
   const [input, setInput] = useState('');
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
-const sendMessage = async () => {
-  const trimmed = input.trim();
-  if (trimmed === '') return;
+  // ✅ async sendMessage using real AI
+  const sendMessage = async () => {
+    const trimmed = input.trim();
+    if (trimmed === '') return;
 
-  const userMessage = { sender: 'user' as const, text: trimmed };
-  setMessages((prev) => [...prev, userMessage]);
-  setInput('');
-
-  try {
-    const reply = await getMindEaseReply(trimmed);
-    const botReply = { sender: 'bot' as const, text: reply };
-    setMessages((prev) => [...prev, botReply]);
-  } catch (err) {
-    const errorReply = {
-      sender: 'bot' as const,
-      text: "Oops! I'm having trouble responding right now. Please try again later.",
-    };
-    setMessages((prev) => [...prev, errorReply]);
-  }
-};
-
-
-    const userMessage = { sender: 'user', text: input };
-    const botReply = {
-      sender: 'bot',
-      text: generateBotResponse(input),
-    };
-
-    setMessages(prev => [...prev, userMessage, botReply]);
+    const userMessage = { sender: 'user' as const, text: trimmed };
+    setMessages((prev) => [...prev, userMessage]);
     setInput('');
-  };
 
+    try {
+      const reply = await getMindEaseReply(trimmed);
+      const botReply = { sender: 'bot' as const, text: reply };
+      setMessages((prev) => [...prev, botReply]);
+    } catch (err) {
+      const errorReply = {
+        sender: 'bot' as const,
+        text: "Oops! I'm having trouble responding right now. Please try again later.",
+      };
+      setMessages((prev) => [...prev, errorReply]);
+    }
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
