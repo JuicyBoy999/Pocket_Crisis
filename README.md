@@ -1,3 +1,5 @@
+I initially started with MindEase using Bolt.new’s conversational UI before the submission period, but the prompt outcomes didn’t align with user needs. I pivoted to building Pocket Crisis Plan focusing on journaling, emotion tracking, and an AI chat assistant during submission period. This shift not only improved the product’s reliability, it truly aligned with my mission to support mental wellness. It taught me flexibility, resilience, and how to learn fast during the hackathon.
+
 # Pocket Crisis Plan
 
 ## What It Does
