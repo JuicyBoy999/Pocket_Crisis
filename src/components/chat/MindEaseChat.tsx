@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
-import { getMindEaseReply } from '../../api'; // ✅ new import
+import { getMindEaseReply } from '../../api'; 
 
 const MindEaseChat: React.FC = () => {
   const { setCurrentScreen } = useAppContext();
@@ -8,7 +8,7 @@ const MindEaseChat: React.FC = () => {
   const [input, setInput] = useState('');
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
-  // ✅ async sendMessage using real AI
+
   const sendMessage = async () => {
     const trimmed = input.trim();
     if (trimmed === '') return;
