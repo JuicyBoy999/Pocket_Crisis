@@ -4,7 +4,13 @@
 Pocket Crisis Plan is a mental health support app that helps users build their own emotional first-aid kit — something they can turn to in moments of distress.
 
 ## Why I Built It
-In hard moments, we often forget what could help us. This app acts as a gentle, pre-prepared lifeline to self-compassion, connection, and emotional grounding.
+I've always believed that when someone is going through a mental or emotional crisis, what they need most isn't a lecture or a hotline. They need a moment of calm, clarity, and something that reminds them why they want to hold on.
+
+I built Pocket Crisis Plan because I’ve seen people struggle silently, including myself at times. It's hard to reach out for help in those moments. This app is designed to be a personal safety net—something gentle, quiet, and always there.
+
+Whether you're feeling anxious, alone, or overwhelmed, it offers structured support: calming techniques, reminders of what matters, your trusted contacts, and even a space to reflect.
+
+I wanted this to feel like carrying a mental health first-aid kit in your pocket—because everyone deserves support, even when they don't know how to ask for it.
 
 ## Features
 - **Crisis Plan Setup**: Add calming tools, trusted contacts, reasons to stay, and comforting content.
