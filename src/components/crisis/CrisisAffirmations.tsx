@@ -7,7 +7,7 @@ import Card from '../ui/Card';
 const CrisisAffirmations: React.FC = () => {
   const { crisisPlanData, setCurrentScreen } = useAppContext();
   
-  // Split the affirmations into a list
+
   const affirmations = crisisPlanData.selfCompassion
     .split(/\n|\./)
     .map(item => item.trim())
