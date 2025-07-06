@@ -30,6 +30,9 @@ I wanted this to feel like carrying a mental health first-aid kit in your pocket
 ## Demo Video
 https://www.facebook.com/share/v/1EaE4uZjLb/
 
+## Test
+https://pocket-crisis-plan.netlify.app/
+
 ## About the Creator
 Solo Bsc(Hons) Computing student from Nepal, focused on building meaningful and emotionally intelligent tools.
 
