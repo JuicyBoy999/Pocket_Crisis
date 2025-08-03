@@ -1,125 +1,78 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Heart } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
+import { Bot } from 'lucide-react'; // Icon for assistant
 
 const WelcomeScreen: React.FC = () => {
   const { setCurrentScreen, hasSavedPlan } = useAppContext();
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.header}>
-          <Text style={styles.heartIcon}>❤️</Text>
-          <Text style={styles.title}>Welcome to Pocket Crisis Plan</Text>
-          <Text style={styles.subtitle}>
-            This app helps you create your own personal mental health first-aid kit — 
-            something you can turn to when things feel too heavy to carry alone.
-          </Text>
-        </View>
+    <div className="relative flex flex-col items-center justify-center min-h-screen p-6 text-center animate-fadeIn">
 
-        <Card>
-          <View style={styles.buttonContainer}>
-            <Button
-              onPress={() => setCurrentScreen('setup-calm')}
-              variant="primary"
-              size="lg"
-              fullWidth
-              style={styles.button}
-            >
-              I'm okay, take me to setup
-            </Button>
+      <div className="mb-8 text-sky-500">
+        <Heart className="w-20 h-20 mx-auto animate-pulse" />
+      </div>
 
-            <Button
-              onPress={() => setCurrentScreen('viewJournal')}
-              variant="secondary"
-              size="lg"
-              fullWidth
-              style={styles.button}
-            >
-              View My Journal
-            </Button>
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        Welcome to Pocket Crisis Plan
+      </h1>
 
-            <Button
-              onPress={() => setCurrentScreen('crisis-intro')}
-              variant="danger"
-              size="lg"
-              fullWidth
-              disabled={!hasSavedPlan}
-              style={styles.button}
-            >
-              I need help right now
-            </Button>
+      <p className="text-lg text-gray-600 mb-8 max-w-md">
+        This app helps you create your own personal mental health first-aid kit — something you can turn to when things feel too heavy to carry alone.
+      </p>
 
-            <Button
-              onPress={() => setCurrentScreen('chat-assistant')}
-              variant="secondary"
-              size="lg"
-              fullWidth
-              style={styles.button}
-            >
-              💬 Chat with MindEase
-            </Button>
+      <Card className="mb-6">
+        <div className="flex flex-col space-y-4">
+          <Button
+            onClick={() => setCurrentScreen('setup-calm')}
+            variant="primary"
+            size="lg"
+            fullWidth
+          >
+            I'm okay, take me to setup
+          </Button>
 
-            {!hasSavedPlan && (
-              <Text style={styles.disabledText}>
-                Crisis mode will be available after you complete setup
-              </Text>
-            )}
-          </View>
-        </Card>
-      </ScrollView>
-    </SafeAreaView>
+          <Button
+            onClick={() => setCurrentScreen('viewJournal')}
+            variant="secondary"
+            size="lg"
+            fullWidth
+          >
+            View My Journal
+          </Button>
+
+          <Button
+            onClick={() => setCurrentScreen('crisis-intro')}
+            variant="danger"
+            size="lg"
+            fullWidth
+            disabled={!hasSavedPlan}
+          >
+            I need help right now
+          </Button>
+
+          <Button
+  onClick={() => setCurrentScreen('chat-assistant')}
+  variant="secondary"
+  size="lg"
+  fullWidth
+>
+  <Bot className="inline-block mr-2" />
+  Chat with MindEase
+</Button>
+
+
+          {!hasSavedPlan && (
+            <p className="text-sm text-gray-500 italic">
+              Crisis mode will be available after you complete setup
+            </p>
+          )}
+        </div>
+      </Card>
+    </div>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f0f9ff',
-  },
-  scrollContent: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    padding: 16,
-  },
-  header: {
-    alignItems: 'center',
-    marginBottom: 32,
-  },
-  heartIcon: {
-    fontSize: 80,
-    marginBottom: 16,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#1f2937',
-    textAlign: 'center',
-    marginBottom: 16,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#6b7280',
-    textAlign: 'center',
-    lineHeight: 24,
-    maxWidth: 320,
-  },
-  buttonContainer: {
-    gap: 16,
-  },
-  button: {
-    marginBottom: 8,
-  },
-  disabledText: {
-    fontSize: 12,
-    color: '#6b7280',
-    fontStyle: 'italic',
-    textAlign: 'center',
-    marginTop: 8,
-  },
-});
 
 export default WelcomeScreen;

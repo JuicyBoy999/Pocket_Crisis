@@ -1,6 +1,6 @@
 export interface ComfortFile {
   name: string;
-  uri: string;
+  url: string;
   type: string; // e.g., 'image', 'video', 'audio'
 }
 
@@ -15,6 +15,14 @@ export interface CrisisPlanData {
   };
 }
 
+
+    comfortMedia?: {
+    images: string[]; // base64 or blob URLs
+    videos: string[];
+    audios: string[];
+  };
+}
+
 export interface JournalEntry {
   date: string;
   content: string;
@@ -23,7 +31,6 @@ export interface JournalEntry {
 
 export type AppScreen = 
   | "welcome"
-  | "viewJournal"
   | "setup-calm"
   | "setup-contacts"
   | "setup-reasons"

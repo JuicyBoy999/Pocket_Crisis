@@ -1,107 +1,41 @@
-# Pocket Crisis Plan - Mobile App
+I initially started with MindEase using Bolt.new’s conversational UI before the submission period, but the prompt outcomes didn’t align with user needs. I pivoted to building Pocket Crisis Plan focusing on journaling, emotion tracking, and an AI chat assistant during submission period. This shift not only improved the product’s reliability, it truly aligned with my mission to support mental wellness. It taught me flexibility, resilience, and how to learn fast during the hackathon.
 
-A React Native mobile application for mental health support, built with Expo.
+# Pocket Crisis Plan
+
+## What It Does
+Pocket Crisis Plan is a mental health support app that helps users build their own emotional first-aid kit — something they can turn to in moments of distress.
+
+## Why I Built It
+I've always believed that when someone is going through a mental or emotional crisis, what they need most isn't a lecture or a hotline. They need a moment of calm, clarity, and something that reminds them why they want to hold on.
+
+I built Pocket Crisis Plan because I’ve seen people struggle silently, including myself at times. It's hard to reach out for help in those moments. This app is designed to be a personal safety net—something gentle, quiet, and always there.
+
+Whether you're feeling anxious, alone, or overwhelmed, it offers structured support: calming techniques, reminders of what matters, your trusted contacts, and even a space to reflect.
+
+I wanted this to feel like carrying a mental health first-aid kit in your pocket—because everyone deserves support, even when they don't know how to ask for it.
 
 ## Features
-- **Crisis Plan Setup**: Add calming tools, trusted contacts, reasons to stay, and comforting content
-- **Emotion-Tagged Journaling**: Write thoughts, tag emotions, and reflect later
-- **Emotion Heatmap**: View emotional trends over the past 7 days
-- **MindEase Chat**: AI assistant for emotional support
-- **Smart Search**: Search journal entries by keywords or emotion filters
+- **Crisis Plan Setup**: Add calming tools, trusted contacts, reasons to stay, and comforting content.
+- **Emotion-Tagged Journaling**: Write your thoughts, tag them with how you feel, and reflect later.
+- **Emotion Heatmap**: View your emotional trends over the past 7 days.
+- **MindEase Chat**: An empathetic AI assistant that offers support and emotional validation like a caring friend.
+- **Smart Search**: Search journal entries by keywords or emotion filters like `emotion:happy`.
 
-## Development Setup
+## Built With
+- React + TypeScript
+- TailwindCSS
+- Context API + LocalStorage
+- (Optional) OpenAI API for MindEase responses
 
-### Prerequisites
-- Node.js (v16 or later)
-- npm or yarn
-- Expo CLI: `npm install -g @expo/cli`
-- EAS CLI: `npm install -g eas-cli`
+## Demo Video
+https://www.facebook.com/share/v/1EaE4uZjLb/
 
-### Installation
-```bash
-npm install
-```
+## Test
+https://pocket-crisis-plan.netlify.app/
 
-### Running the App
-```bash
-# Start development server
-npm start
+## About the Creator
+Solo Bsc(Hons) Computing student from Nepal, focused on building meaningful and emotionally intelligent tools.
 
-# Run on Android
-npm run android
-
-# Run on iOS
-npm run ios
-```
-
-### Building for Production
-
-#### Android (Google Play Store)
-```bash
-# Build AAB for Play Store
-eas build --platform android --profile production
-
-# Submit to Play Store
-eas submit --platform android
-```
-
-#### iOS (App Store)
-```bash
-# Build for App Store
-eas build --platform ios --profile production
-
-# Submit to App Store
-eas submit --platform ios
-```
-
-### Preview Builds
-```bash
-# Build APK for testing
-eas build --platform android --profile preview
-```
-
-## Project Structure
-```
-src/
-├── components/
-│   ├── ui/           # Reusable UI components
-│   ├── welcome/      # Welcome screen
-│   ├── setup/        # Setup flow screens
-│   ├── crisis/       # Crisis mode screens
-│   ├── journal/      # Journal functionality
-│   └── chat/         # AI chat feature
-├── context/          # React Context for state management
-└── types/            # TypeScript type definitions
-```
-
-## Key Technologies
-- **React Native** with **Expo** for cross-platform development
-- **TypeScript** for type safety
-- **AsyncStorage** for local data persistence
-- **Expo Router** for navigation
-- **React Native Vector Icons** for icons
-- **Expo AV** for media playback
-- **Expo Image Picker** for media selection
-
-## Publishing to App Stores
-
-### Google Play Store
-1. Create a Google Play Console account
-2. Configure `eas.json` with your app details
-3. Build with `eas build --platform android --profile production`
-4. Submit with `eas submit --platform android`
-
-### Apple App Store
-1. Create an Apple Developer account
-2. Configure `eas.json` with your app details
-3. Build with `eas build --platform ios --profile production`
-4. Submit with `eas submit --platform ios`
-
-## App Store Requirements
-- **Privacy Policy**: Required for both stores
-- **App Icons**: 1024x1024 for both platforms
-- **Screenshots**: Various sizes for different devices
-- **App Description**: Compelling description highlighting mental health support features
-
-## License
-This project is for mental health support and educational purposes.
+## Submission Info
+- **Track**: Mental Health / AI
+- **Built for**: World's Largest Hackathon by Bolt.new

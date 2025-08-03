@@ -1,87 +1,44 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
-interface ButtonProps {
-  onPress: () => void;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'danger' | 'text';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   children: React.ReactNode;
-  disabled?: boolean;
-  style?: ViewStyle;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  onPress,
   variant = 'primary',
   size = 'md',
   fullWidth = false,
   children,
-  disabled = false,
-  style,
+  className = '',
+  ...props
 }) => {
-  const getButtonStyle = (): ViewStyle => {
-    const baseStyle: ViewStyle = {
-      borderRadius: 25,
-      alignItems: 'center',
-      justifyContent: 'center',
-      ...style,
-    };
-
-    if (fullWidth) {
-      baseStyle.width = '100%';
-    }
-
-    const sizeStyles = {
-      sm: { paddingVertical: 8, paddingHorizontal: 16 },
-      md: { paddingVertical: 12, paddingHorizontal: 24 },
-      lg: { paddingVertical: 16, paddingHorizontal: 32 },
-    };
-
-    const variantStyles = {
-      primary: { backgroundColor: disabled ? '#94a3b8' : '#38bdf8' },
-      secondary: { backgroundColor: disabled ? '#94a3b8' : '#a78bfa' },
-      danger: { backgroundColor: disabled ? '#94a3b8' : '#f87171' },
-      text: { backgroundColor: 'transparent' },
-    };
-
-    return {
-      ...baseStyle,
-      ...sizeStyles[size],
-      ...variantStyles[variant],
-    };
+  const baseStyles = 'rounded-full font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2';
+  
+  const variantStyles = {
+    primary: 'bg-sky-400 text-white hover:bg-sky-500 focus:ring-sky-400',
+    secondary: 'bg-lavender-400 text-white hover:bg-lavender-500 focus:ring-lavender-400',
+    danger: 'bg-red-400 text-white hover:bg-red-500 focus:ring-red-400',
+    text: 'bg-transparent text-sky-600 hover:text-sky-700 focus:ring-sky-400',
   };
 
-  const getTextStyle = (): TextStyle => {
-    const sizeStyles = {
-      sm: { fontSize: 14 },
-      md: { fontSize: 16 },
-      lg: { fontSize: 18 },
-    };
-
-    const variantStyles = {
-      primary: { color: 'white' },
-      secondary: { color: 'white' },
-      danger: { color: 'white' },
-      text: { color: '#0284c7' },
-    };
-
-    return {
-      fontWeight: '600',
-      ...sizeStyles[size],
-      ...variantStyles[variant],
-    };
+  const sizeStyles = {
+    sm: 'py-1 px-3 text-sm',
+    md: 'py-2 px-6 text-base',
+    lg: 'py-3 px-8 text-lg',
   };
+
+  const widthStyles = fullWidth ? 'w-full' : '';
 
   return (
-    <TouchableOpacity
-      style={getButtonStyle()}
-      onPress={onPress}
-      disabled={disabled}
-      activeOpacity={0.7}
+    <button
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${widthStyles} ${className}`}
+      {...props}
     >
-      <Text style={getTextStyle()}>{children}</Text>
-    </TouchableOpacity>
+      {children}
+    </button>
   );
 };
 

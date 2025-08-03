@@ -1,34 +1,16 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
 
 interface CardProps {
   children: React.ReactNode;
-  style?: any;
+  className?: string;
 }
 
-const Card: React.FC<CardProps> = ({ children, style }) => {
+const Card: React.FC<CardProps> = ({ children, className = '' }) => {
   return (
-    <View style={[styles.card, style]}>
+    <div className={`bg-white rounded-xl shadow-md p-6 w-full max-w-md mx-auto ${className}`}>
       {children}
-    </View>
+    </div>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 24,
-    marginHorizontal: 16,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-});
 
 export default Card;
