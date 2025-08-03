@@ -1,4 +1,3 @@
-import boltLogo from '../../assets/bolt-logo.png';
 import React from 'react';
 import { Heart } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
@@ -11,20 +10,6 @@ const WelcomeScreen: React.FC = () => {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-6 text-center animate-fadeIn">
-      {/* Logo in top-right corner */}
-      <a
-        href="https://bolt.new"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute top-4 right-4"
-        title="Visit Bolt.new"
-      >
-        <img
-          src={boltLogo}
-          alt="Bolt Logo"
-          className="h-10 w-10 object-contain hover:opacity-80 transition-opacity"
-        />
-      </a>
 
       <div className="mb-8 text-sky-500">
         <Heart className="w-20 h-20 mx-auto animate-pulse" />
