@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#f0f9ff"
     },
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#f0f9ff"
       },
       "package": "com.pocketcrisisplan.app",
