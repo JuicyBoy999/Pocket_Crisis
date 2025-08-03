@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppScreen, CrisisPlanData, JournalEntry } from '../types';
 
 interface AppContextType {
@@ -10,9 +11,8 @@ interface AppContextType {
   journalEntries: JournalEntry[];
   addJournalEntry: (content: string, emotion?: string) => void;
   editJournalEntry: (index: number, content: string, emotion?: string) => void;
-  setJournalEntries: 
-  React.Dispatch<React.SetStateAction<JournalEntry[]>>;
-
+  deleteJournalEntry: (index: number) => void;
+  setJournalEntries: React.Dispatch<React.SetStateAction<JournalEntry[]>>;
 }
 
 const defaultCrisisPlanData: CrisisPlanData = {
@@ -21,9 +21,9 @@ const defaultCrisisPlanData: CrisisPlanData = {
   reasonsToStay: '',
   selfCompassion: '',
   comfortContent: {
-  link: '',
-  files: []
-}
+    link: '',
+    files: []
+  }
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -33,64 +33,76 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [crisisPlanData, setCrisisPlanData] = useState<CrisisPlanData>(defaultCrisisPlanData);
   const [hasSavedPlan, setHasSavedPlan] = useState<boolean>(false);
   const [journalEntries, setJournalEntries] = useState<JournalEntry[]>([]);
-  
-const editJournalEntry = (index: number, newContent: string, newEmotion?: string) => {
-  setJournalEntries(prev => {
-    const updated = [...prev];
-    updated[index] = {
-      ...updated[index],
-      content: newContent,
-      emotion: newEmotion
-    };
-    return updated;
-  });
-};
 
+  const editJournalEntry = (index: number, newContent: string, newEmotion?: string) => {
+    setJournalEntries(prev => {
+      const updated = [...prev];
+      updated[index] = {
+        ...updated[index],
+        content: newContent,
+        emotion: newEmotion
+      };
+      return updated;
+    });
+  };
 
+  const deleteJournalEntry = (index: number) => {
+    setJournalEntries(prev => prev.filter((_, i) => i !== index));
+  };
 
-const deleteJournalEntry = (index: number) => {
-  setJournalEntries(prev => prev.filter((_, i) => i !== index));
-};
-
-
-  // Load saved plan from localStorage
+  // Load saved plan from AsyncStorage
   useEffect(() => {
-    try {
-      const savedPlan = localStorage.getItem('crisisPlanData');
-      const savedJournal = localStorage.getItem('journalEntries');
-      
-      if (savedPlan) {
-        setCrisisPlanData(JSON.parse(savedPlan));
-        setHasSavedPlan(true);
+    const loadData = async () => {
+      try {
+        const savedPlan = await AsyncStorage.getItem('crisisPlanData');
+        const savedJournal = await AsyncStorage.getItem('journalEntries');
+        
+        if (savedPlan) {
+          setCrisisPlanData(JSON.parse(savedPlan));
+          setHasSavedPlan(true);
+        }
+        
+        if (savedJournal) {
+          setJournalEntries(JSON.parse(savedJournal));
+        }
+      } catch (error) {
+        console.error('Error loading saved data:', error);
       }
-      
-      if (savedJournal) {
-        setJournalEntries(JSON.parse(savedJournal));
-      }
-    } catch (error) {
-      console.error('Error loading saved data:', error);
-    }
+    };
+    
+    loadData();
   }, []);
 
-  // Save plan to localStorage when it changes
+  // Save plan to AsyncStorage when it changes
   useEffect(() => {
-    try {
-      if (Object.values(crisisPlanData).some(value => value !== '')) {
-        localStorage.setItem('crisisPlanData', JSON.stringify(crisisPlanData));
-        setHasSavedPlan(true);
+    const saveData = async () => {
+      try {
+        if (Object.values(crisisPlanData).some(value => 
+          typeof value === 'string' ? value !== '' : 
+          value.link !== '' || value.files.length > 0
+        )) {
+          await AsyncStorage.setItem('crisisPlanData', JSON.stringify(crisisPlanData));
+          setHasSavedPlan(true);
+        }
+      } catch (error) {
+        console.error('Error saving plan:', error);
       }
-    } catch (error) {
-      console.error('Error saving plan:', error);
-    }
+    };
+    
+    saveData();
   }, [crisisPlanData]);
 
   // Save journal entries when they change
   useEffect(() => {
-    try {
-      localStorage.setItem('journalEntries', JSON.stringify(journalEntries));
-    } catch (error) {
-      console.error('Error saving journal entries:', error);
-    }
+    const saveJournal = async () => {
+      try {
+        await AsyncStorage.setItem('journalEntries', JSON.stringify(journalEntries));
+      } catch (error) {
+        console.error('Error saving journal entries:', error);
+      }
+    };
+    
+    saveJournal();
   }, [journalEntries]);
 
   const updateCrisisPlanData = <K extends keyof CrisisPlanData>(
@@ -103,15 +115,14 @@ const deleteJournalEntry = (index: number) => {
     }));
   };
 
-const addJournalEntry = (content: string, emotion?: string) => {
-  const newEntry: JournalEntry = {
-    date: new Date().toISOString(),
-    content,
-    emotion
+  const addJournalEntry = (content: string, emotion?: string) => {
+    const newEntry: JournalEntry = {
+      date: new Date().toISOString(),
+      content,
+      emotion
+    };
+    setJournalEntries(prev => [...prev, newEntry]);
   };
-  setJournalEntries(prev => [...prev, newEntry]);
-};
-
 
   return (
     <AppContext.Provider
@@ -125,6 +136,7 @@ const addJournalEntry = (content: string, emotion?: string) => {
         addJournalEntry,
         editJournalEntry,
         deleteJournalEntry,
+        setJournalEntries,
       }}
     >
       {children}
