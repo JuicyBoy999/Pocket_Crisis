@@ -16,6 +16,7 @@ interface AppContextType {
 }
 
 const defaultCrisisPlanData: CrisisPlanData = {
+  }
   calmingTechniques: '',
   trustedContacts: '',
   reasonsToStay: '',
@@ -145,6 +146,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 };
 
 export const useAppContext = () => {
+    }
   const context = useContext(AppContext);
   if (context === undefined) {
     throw new Error('useAppContext must be used within an AppProvider');
