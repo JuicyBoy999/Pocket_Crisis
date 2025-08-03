@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/",
         "backgroundColor": "#f0f9ff"
       },
       "package": "com.pocketcrisisplan.app",
